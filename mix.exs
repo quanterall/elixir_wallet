@@ -22,8 +22,8 @@ defmodule ElixirWallet.Mixfile do
   defp deps do
     [
       {:keccakf1600, "~> 2.0.0"},
-      {:base58, "~> 0.1.0"},
-      {:cryptex, "~> 0.0.1"}
+      {:cryptex, "~> 0.0.1"},
+      {:base58, github: "titan098/erl-base58"}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
     ]
