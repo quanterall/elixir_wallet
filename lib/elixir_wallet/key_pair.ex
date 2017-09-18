@@ -7,7 +7,6 @@ defmodule KeyPair do
 
     private = :os.cmd('openssl ecparam -genkey -name secp256k1 -noout -out ec_private_key.pem')
     public = :os.cmd('openssl ec -in ec_private_key.pem -pubout -out ec_public_key.pem')
-    IO.inspect({private,public})
     private_key = :os.cmd('openssl ec -in ec_private_key.pem -outform DER|tail -c +8|head -c 32|xxd -p -c 32')
     public_key = :os.cmd('openssl ec -in ec_private_key.pem -pubout -outform DER|tail -c 65|xxd -p -c 65')
 

@@ -10,7 +10,9 @@ defmodule Wallet do
     {private, public} = KeyPair.keypair()
     address = generate_wallet_address(public)
     data = %{private_key: private, public: public, address: address}
-    encrypted = WalletCrypto.encrypt_wallet(data, password)
+    phrase = Mnemonic.generate_phrase(12)
+    IO.puts("Use the following phrase as additional authentication when accessing your wallet:\n#{phrase}")
+    encrypted = WalletCrypto.encrypt_wallet(data, password,phrase)
 
     IO.binwrite(file, encrypted)
     File.close(file)
