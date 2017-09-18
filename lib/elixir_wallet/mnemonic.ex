@@ -1,7 +1,7 @@
 defmodule Mnemonic do
 
   def get_wordlist do
-    {:ok,words} = File.read "wordlist.txt"
+    {:ok,words} = File.read "priv/wordlist.txt"
     String.replace(words, "\n", ",")
     |>String.split(",")
     |>List.to_tuple
@@ -16,14 +16,13 @@ defmodule Mnemonic do
   end
 
   defp generate_phrase(result, current_word_count, word_count) do
-    Enum.reverse(result)
-    List.to_string(result)
+    result
+    |> List.to_string()
     |> String.trim()
-
   end
 
   def generate_word do
-    :crypto.start
+    :crypto.rand_seed()
     elem(get_wordlist(),
     (get_wordlist()
     |>Tuple.to_list
@@ -31,4 +30,4 @@ defmodule Mnemonic do
     |>:rand.uniform)-1)
   end
 end
-IO.inspect(Mnemonic.generate_phrase(10))
+IO.inspect(Mnemonic.generate_phrase(12))
