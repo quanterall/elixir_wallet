@@ -27,7 +27,8 @@ defmodule GenerateIndexes do
       {value,_} = Integer.parse(n,2)
       [value | parsed_list]
     end
-    parsed_list|>List.flatten
+
+    parsed_list |> List.flatten |> Enum.reverse
   end
 
 end
